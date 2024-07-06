@@ -81,7 +81,7 @@ function Navigation() {
         className="flex items-center gap-x-2 p-1 font-medium"
       >
         <a href="#" className="flex items-center">
-          Testimonials
+          UI/UX Designs
         </a>
       </Typography>
     </ul>
@@ -107,7 +107,16 @@ function Navigation() {
             size="xl"
             className="hidden lg:inline-block w-[100px] h-[50px]"
           >
-            <span>Contact Me</span>
+            <span>
+              {" "}
+              <a
+                href={`mailto:sileshieabel@gmail.com?subject=${encodeURIComponent(
+                  "Your Subject Here"
+                )}`}
+              >
+                Contact Me
+              </a>
+            </span>
           </Button>
         </div>
         <IconButton

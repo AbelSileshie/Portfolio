@@ -24,10 +24,20 @@ const Home = () => {
               reprehenderit.
             </Typography>
             <div className="flex space-x-4 mt-8">
-              <Button className="w-24 bg-[#5E3BEE] rounded-none">Email</Button>
               <Button className="w-24 bg-[#5E3BEE] rounded-none">
-                Contact
+                <a
+                  href={`mailto:sileshieabel@gmail.com?subject=${encodeURIComponent(
+                    "Your Subject Here"
+                  )}`}
+                >
+                  Contact Me
+                </a>
               </Button>
+              <a href="https://www.linkedin.com/in/abelsileshie/">
+                <Button className="w-24 bg-[#5E3BEE] rounded-none">
+                  Linkedin
+                </Button>
+              </a>
             </div>
           </div>
           <div className="mt-8 lg:mt-0 lg:p-24 rounded-2xl w-full h-full flex justify-center lg:justify-end">
