@@ -131,6 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
     isHovering = false;
     originalText.style.opacity = "1";
     aliasText.style.opacity = "0";
-    changeText(originalText, { textContent: "Tesfamichael Tafere" });
+    changeText(originalText, { textContent: "Abel Tesfaw Sileshie" });
   });
 });
