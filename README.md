@@ -1,18 +1,19 @@
-# Tesfamichael Tafere's Portfolio
+# Abel Sileshie's Portfolio
 
 Welcome to my portfolio site! 🌟
 
-Check out my work and projects [here](https://tesfamichaeltafere.netlify.app/#home). 🚀
+Check out my work and projects [here](https://abelsileshie.github.io). 🚀
 
 ## About Me
 
-I am a passionate developer with a keen interest in creating innovative solutions. My portfolio showcases a variety of projects that highlight my skills and expertise.
+I’m a passionate full-stack developer and data science student with a deep love for crafting modern, scalable web applications. My portfolio highlights projects built with technologies like React, Tailwind, Supabase, PostgreSQL, and more.
 
-Feel free to explore and reach out if you have any questions or opportunities! 😊
+Feel free to explore and reach out if you're interested in collaborating or hiring! 😊
 
 ## Contact
 
-- Email: [tesfamichael132@gmail.com](mailto:tesfamichael132@gmail.com)
-- LinkedIn: [Tesfamichael Tafere](https://www.linkedin.com/in/tesfamichael-tafere)
+- Email: [sileshieabel@gmail.com](mailto:sileshieabel@gmail.com)
+- LinkedIn: [Abel Sileshie](https://www.linkedin.com/in/abelsileshie)
+- Telegram: [@abeltesfaw](https://t.me/abeltesfaw)
 
-Thank you for visiting! 🙏
+Thank you for stopping by! 🙏
