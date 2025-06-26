@@ -2,7 +2,7 @@
 
 Welcome to my portfolio site! 🌟
 
-Check out my work and projects [here](https://abelsileshie.github.io). 🚀
+Check out my portfolio [here](https://abelsileshie.github.io). 🚀
 
 ## About Me
 
