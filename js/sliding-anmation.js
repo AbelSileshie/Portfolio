@@ -6,11 +6,23 @@ let seeMoreButtons = document.querySelectorAll(".seeMore");
 let backButton = document.getElementById("back");
 
 let autoScrollInterval = 4000;
-let autoScrollTimeout;
 let autoScroll;
+let unAcceppClick;
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
 
 const startAutoScroll = (interval) => {
   clearInterval(autoScroll);
+  if (
+    prefersReducedMotion ||
+    carousel.matches(":hover") ||
+    carousel.matches(":focus-within") ||
+    carousel.classList.contains("showDetail")
+  ) {
+    return;
+  }
+
   autoScroll = setInterval(() => {
     showSlider("next");
   }, interval);
@@ -18,6 +30,19 @@ const startAutoScroll = (interval) => {
 
 const pauseAutoScroll = () => {
   clearInterval(autoScroll);
+};
+
+const updateCarouselAccessibility = () => {
+  const activeItem = listHTML.querySelectorAll(".item")[1];
+  const showingDetail = carousel.classList.contains("showDetail");
+
+  listHTML.querySelectorAll(".item").forEach((item) => {
+    const isActive = item === activeItem;
+    item.inert = !isActive;
+    item.setAttribute("aria-hidden", String(!isActive));
+    item.querySelector(".introduce").inert = showingDetail;
+    item.querySelector(".detail").inert = !showingDetail;
+  });
 };
 
 nextButton.onclick = function () {
@@ -29,7 +54,6 @@ prevButton.onclick = function () {
   startAutoScroll(10000); // Set to 10 seconds after button click
 };
 
-let unAcceppClick;
 const showSlider = (type) => {
   nextButton.classList.add("disabled");
   prevButton.classList.add("disabled");
@@ -43,6 +67,7 @@ const showSlider = (type) => {
     listHTML.prepend(items[items.length - 1]);
     carousel.classList.add("prev");
   }
+  updateCarouselAccessibility();
   clearTimeout(unAcceppClick);
   unAcceppClick = setTimeout(() => {
     nextButton.classList.remove("disabled");
@@ -54,14 +79,33 @@ seeMoreButtons.forEach((button) => {
   button.onclick = function () {
     carousel.classList.remove("next", "prev");
     carousel.classList.add("showDetail");
+    updateCarouselAccessibility();
     pauseAutoScroll(); // Pause auto-scroll when "seeMore" is clicked
+    backButton.focus();
   };
 });
 
 backButton.onclick = function () {
   carousel.classList.remove("showDetail");
+  updateCarouselAccessibility();
+  listHTML.querySelectorAll(".item")[1].querySelector(".seeMore").focus();
   startAutoScroll(autoScrollInterval); // Resume auto-scroll when back button is clicked
 };
+
+carousel.addEventListener("focusin", pauseAutoScroll);
+carousel.addEventListener("focusout", () => {
+  requestAnimationFrame(() => {
+    if (!carousel.contains(document.activeElement)) {
+      startAutoScroll(autoScrollInterval);
+    }
+  });
+});
+carousel.addEventListener("pointerenter", pauseAutoScroll);
+carousel.addEventListener("pointerleave", () => {
+  startAutoScroll(autoScrollInterval);
+});
+
+updateCarouselAccessibility();
 
 // Start initial auto-scroll
 startAutoScroll(autoScrollInterval);

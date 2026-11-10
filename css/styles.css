@@ -1509,6 +1509,24 @@ ul .tooltip::before {
 }
 
 /* carousel */
+.projects-section {
+  padding: 10rem 9% 2rem;
+  position: relative;
+}
+
+.projects-section > .heading {
+  margin-bottom: 1.2rem;
+}
+
+.projects-intro {
+  max-width: 76rem;
+  margin: 0 auto 2.4rem;
+  text-align: center;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
 .carousel {
   position: relative;
   height: 560px;
@@ -1538,13 +1556,40 @@ ul .tooltip::before {
   z-index: 10;
   transform: translateX(0);
 }
-.carousel .list .item img {
+.carousel .list .item img,
+.carousel .list .item .project-placeholder {
   width: 50%;
   position: absolute;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
   transition: right 1.5s;
+}
+
+.carousel .list .item .project-placeholder {
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.18), transparent 35%),
+    linear-gradient(135deg, #087e84, #222831 78%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.project-placeholder i {
+  font-size: 6rem;
+  color: #72eef1;
+}
+
+.project-placeholder span {
+  font-size: 1.8rem;
+  font-weight: 600;
 }
 
 .carousel .list .item .introduce {
@@ -1574,6 +1619,32 @@ ul .tooltip::before {
   color: var(--text-color);
   padding: 15px;
 }
+
+.project-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 0.8rem 0 0;
+}
+
+.introduce .project-tech-tags {
+  justify-content: flex-start;
+  padding: 0 15px;
+}
+
+.project-tech-tags span {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--main-color);
+  border-radius: 999px;
+  background: rgba(0, 173, 181, 0.16);
+  color: var(--text-color);
+  font-size: 1.2rem;
+  line-height: 1.4;
+  padding: 0.3rem 0.8rem;
+}
+
 .carousel .list .item .introduce .seeMore {
   font-family: Poppins;
   color: var(--text-color);
@@ -1722,7 +1793,8 @@ ul .tooltip::before {
   opacity: 0;
   pointer-events: none;
 }
-.carousel.showDetail .list .item:nth-child(2) img {
+.carousel.showDetail .list .item:nth-child(2) img,
+.carousel.showDetail .list .item:nth-child(2) .project-placeholder {
   right: 50%;
 }
 .carousel.showDetail .list .item:nth-child(2) .detail {
@@ -1836,6 +1908,13 @@ ul .tooltip::before {
   left: unset;
   right: 10%;
 }
+
+.carousel button:focus-visible,
+.carousel a:focus-visible {
+  outline: 3px solid var(--main-color);
+  outline-offset: 3px;
+}
+
 #back {
   color: var(--main-color);
   font-size: 15px;
@@ -1902,6 +1981,11 @@ ul .tooltip::before {
 }
 @media screen and (max-width: 767px) {
   /* mobile */
+  .projects-section {
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
   .carousel {
     height: 600px;
   }
@@ -1917,7 +2001,8 @@ ul .tooltip::before {
     width: 50%;
   }
 
-  .carousel .list .item img {
+  .carousel .list .item img,
+  .carousel .list .item .project-placeholder {
     width: 40%;
   }
   .carousel.showDetail .list .item:nth-child(2) .detail {
@@ -1933,5 +2018,16 @@ ul .tooltip::before {
     display: flex;
     width: max-content;
     float: right;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel *,
+  .carousel *::before,
+  .carousel *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }
